@@ -10,6 +10,10 @@ h1{
     font-size: 2.2rem;
 }
 
+.starter-header {
+    visibility: visible;
+}
+
 h2{
     font-size: 1.8rem;
 }
@@ -21,6 +25,9 @@ section {
     padding: 2rem 6rem;
 }
 
-ol {
-    visibility: hidden;
+.answers {
+    display: none;
+}
+.submitB {
+    display: none;
 }
