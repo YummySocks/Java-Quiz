@@ -6,11 +6,19 @@ ul {
     padding: 0 2rem;
 }
 
+h1{
+    font-size: 2.2rem;
+}
+
+h2{
+    font-size: 1.8rem;
+}
+
 section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 6rem;
+    padding: 2rem 6rem;
 }
 
 ol {
