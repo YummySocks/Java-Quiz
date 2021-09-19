@@ -11,7 +11,7 @@ h1{
 }
 
 .starter-header {
-    visibility: visible;
+    display: contents;
 }
 
 h2{
