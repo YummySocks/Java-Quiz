@@ -14,7 +14,8 @@ var starterI = document.querySelector(".starter-items");
 var submitB = document.querySelector(".submitB");
 var index = 0;
 var choices = Array.from(document.querySelectorAll(".answers"));
-console.log(choices)
+var selections = Array.from(document.querySelectorAll(".select"));
+console.log(selections)
 var quizCont = [
     {
         question: "this is the first question",
@@ -22,7 +23,7 @@ var quizCont = [
         choice2: "second",
         choice3: "third",
         choice4: "fourth",
-        correctAns: 'a',
+        correctAns: 'first',
     },
     {
         question: "this is the 2nd question",
@@ -30,7 +31,7 @@ var quizCont = [
         choice2: "2nd",
         choice3: "3rd",
         choice4: "4th",
-        correctAns: 'b',
+        correctAns: 'choice2',
     },
     {
         question: "this is the 3rd question",
@@ -38,11 +39,27 @@ var quizCont = [
         choice2: "second",
         choice3: "third",
         choice4: "fourth",
-        correctAns: 'c',
+        correctAns: 'choice3',
     }
     
 ]
 var questions = [...quizCont];
+element = "";
+state = "";
+
+function checkAnswers (event){
+    var element = e.target;
+    var state = quizCont[index].correctAns
+    // console.log(questions[index].choice1)
+    console.log(choices[index].choice1)
+    console.log(event.target);
+    if (element == state){
+        console.log('good job')
+    } else{
+        console.log('dumbass')
+    }
+}
+
 // var questionLi = ["this is the first question","this is the second question","this is the third question",
 // "this is the fourth question","this is the fifth question","this is the 6th question"]
 // var ans1 = ["first","second","third","fourth"];
@@ -71,6 +88,9 @@ function displayQuestions (){
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4;
     submitB.addEventListener("click", nextQuestion); 
+    // selections.addEventListener("click", checkAnswers);
+    // answersLi.addEventListener("click", checkAnswers);
+    console.log(questions[index].correctAns)
 }
 
 function nextQuestion(){
@@ -80,6 +100,7 @@ function nextQuestion(){
     li2.innerHTML = questions[index].choice2;
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4;
+    console.log(questions[index].correctAns)
 }
 
 // function checkAnswers (){
