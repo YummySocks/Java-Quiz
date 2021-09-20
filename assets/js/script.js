@@ -14,8 +14,8 @@ var starterI = document.querySelector(".starter-items");
 var submitB = document.querySelector(".submitB");
 var index = 0;
 var choices = Array.from(document.querySelectorAll(".answers"));
-var selections = Array.from(document.querySelectorAll(".select"));
-console.log(selections)
+console.log(choices)
+console.log()
 var quizCont = [
     {
         question: "this is the first question",
@@ -31,7 +31,7 @@ var quizCont = [
         choice2: "2nd",
         choice3: "3rd",
         choice4: "4th",
-        correctAns: 'choice2',
+        correctAns: '2nd',
     },
     {
         question: "this is the 3rd question",
@@ -39,7 +39,7 @@ var quizCont = [
         choice2: "second",
         choice3: "third",
         choice4: "fourth",
-        correctAns: 'choice3',
+        correctAns: 'third',
     }
     
 ]
@@ -48,27 +48,16 @@ element = "";
 state = "";
 
 function checkAnswers (event){
-    var element = e.target;
-    var state = quizCont[index].correctAns
-    // console.log(questions[index].choice1)
-    console.log(choices[index].choice1)
-    console.log(event.target);
+    var element = event.target.innerHTML;
+    var state = quizCont[index].correctAns;
+    console.log(element);
     if (element == state){
-        console.log('good job')
+        console.log('good job');
     } else{
-        console.log('dumbass')
+        console.log('dumbass');
     }
 }
 
-// var questionLi = ["this is the first question","this is the second question","this is the third question",
-// "this is the fourth question","this is the fifth question","this is the 6th question"]
-// var ans1 = ["first","second","third","fourth"];
-// var ans2 = ["1st","2nd","3rd","4th"];
-// var ans3 = ["uno","dos","tres","quattro"];
-// var ans4 = ["1ne","2wo","3ree","4our"];
-// var ans5 = ["5","6","7","8"];
-// var ans6 = ["tell me why","hey now","party rock","i tried so hard"];
-// var ansArray = [ans1, ans2, ans3, ans4,ans5,ans6];
 console.log(quizCont)
 startB.addEventListener("click", function(){
     starterI.style.display = "none";
@@ -88,8 +77,7 @@ function displayQuestions (){
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4;
     submitB.addEventListener("click", nextQuestion); 
-    // selections.addEventListener("click", checkAnswers);
-    // answersLi.addEventListener("click", checkAnswers);
+    answersLi.addEventListener("click", checkAnswers);
     console.log(questions[index].correctAns)
 }
 
@@ -102,11 +90,3 @@ function nextQuestion(){
     li4.innerHTML = questions[index].choice4;
     console.log(questions[index].correctAns)
 }
-
-// function checkAnswers (){
-//     if (choice3.clicked){
-//         console.log("thats right!")
-//     } else {
-//         console.log("ooof wrong answer idiot")
-//     }
-// }
