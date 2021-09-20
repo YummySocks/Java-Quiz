@@ -11,52 +11,73 @@ var startB = document.querySelector("#startB");
 var answersLi = document.querySelector(".answer-list");
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
-var submitB = document.querySelector(".submitB");
 var index = 0;
 var choices = Array.from(document.querySelectorAll(".answers"));
-console.log(choices)
-console.log()
+console.log(choices);
+console.log();
 var quizCont = [
     {
         question: "this is the first question",
-        choice1: "first",
-        choice2: "second",
-        choice3: "third",
-        choice4: "fourth",
-        correctAns: 'first',
+        choice1: "1: "+ "first",
+        choice2: "2: " + "second",
+        choice3: "3: " + "third",
+        choice4: "4: " + "fourth",
+        correctAns: '1',
     },
     {
         question: "this is the 2nd question",
-        choice1: "1st",
-        choice2: "2nd",
-        choice3: "3rd",
-        choice4: "4th",
-        correctAns: '2nd',
+        choice1: "1: " + "1st",
+        choice2: "2: " + "2nd",
+        choice3: "3: " + "3rd",
+        choice4: "4: " + "4th",
+        correctAns: '2',
     },
     {
         question: "this is the 3rd question",
-        choice1: "first",
-        choice2: "second",
-        choice3: "third",
-        choice4: "fourth",
-        correctAns: 'third',
+        choice1: "1: " + "first",
+        choice2: "2: " + "second",
+        choice3: "3: " + "third",
+        choice4: "4: " + "fourth",
+        correctAns: '3',
+    },
+    {
+        question: "this is the 4th question",
+        choice1: "1: " + "first",
+        choice2: "2: " + "second",
+        choice3: "3: " + "third",
+        choice4: "4: " + "fourth",
+        correctAns: '4',
+    },
+    {
+        question: "this is the 5th question",
+        choice1: "1: " + "first",
+        choice2: "2: " + "second",
+        choice3: "3: " + "third",
+        choice4: "4: " + "fourth",
+        correctAns: '1',
     }
     
 ]
 var questions = [...quizCont];
 element = "";
 state = "";
+// var tempYText = ;
+var tempText = document.querySelector(".temp");
+console.log(tempText)
 
 function checkAnswers (event){
-    var element = event.target.innerHTML;
+    var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
     console.log(element);
     if (element == state){
         console.log('good job');
+        nextQuestion();
     } else{
         console.log('dumbass');
+        nextQuestion();
     }
 }
+
 
 console.log(quizCont)
 startB.addEventListener("click", function(){
@@ -68,15 +89,13 @@ startB.addEventListener("click", function(){
 
 function displayQuestions (){
     answersLi.style.display = "contents";
-    submitB.style.display = "contents";
     document.querySelector("section").style.alignItems = "flex-start";
     
     questH.innerHTML = questions[index].question;
     li1.innerHTML = questions[index].choice1;
     li2.innerHTML = questions[index].choice2;
     li3.innerHTML = questions[index].choice3;
-    li4.innerHTML = questions[index].choice4;
-    submitB.addEventListener("click", nextQuestion); 
+    li4.innerHTML = questions[index].choice4; 
     answersLi.addEventListener("click", checkAnswers);
     console.log(questions[index].correctAns)
 }

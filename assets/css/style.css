@@ -27,7 +27,13 @@ section {
 
 .answer-list {
     display: none;
+    list-style-type: none;
 }
 .submitB {
     display: none;
 }
+
+.temp {
+    display: none;
+}
+
