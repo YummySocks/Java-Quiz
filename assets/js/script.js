@@ -17,8 +17,11 @@ var scoreInput = document.querySelector("#scoreText");
 var tempText = document.querySelector(".temp");
 var highListSection = document.querySelector(".highListSection");
 var finalScreenSection = document.querySelector(".finalScreen");
-var backB = document.querySelector(".backB");
-backB.style.display = "none";
+var backB = document.querySelector("#backB");
+var clearB = document.querySelector("#clearB");
+var lastBs = document.querySelector(".lastB");
+backB.style.display = 'none'
+clearB.style.display = 'none'
 winner = false;
 var highList = [];
 var quizCont = [
@@ -189,21 +192,42 @@ function loseGame () {
     location.reload();
 }
 
+function clearScores () {
+    clearB.style.display = 'none'
+    highListSection.style.display = 'none'
+    
+    localStorage.clear();
+    displayHighScores();
+    highListSection.style.display = 'none'
+    var noText = document.createElement("h1");
+    noText.textContent = "no scores yet"
+
+}
+
 function displayHighScores (){
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
     document.querySelector(".topBar").style.display = "none";
     console.log(highScores);
-    for (i = 0; i < highScores.length; i ++){
-        var highListScore = highScores[i].score;
-        var highListName = highScores[i].name;
-        var finalLi = document.createElement("li")
-        finalLi.style.listStyle = "none";
-        finalLi.style.flexDirection = "column"
-        finalLi.textContent =  highListName + ": " + highListScore;
-        highListSection.appendChild(finalLi);
-        backB.style.display = "block"
+    if (highScores != null){
+        for (i = 0; i < highScores.length; i ++){
+            var highListScore = highScores[i].score;
+            var highListName = highScores[i].name;
+            var finalLi = document.createElement("li")
+            finalLi.style.listStyle = "none";
+            finalLi.style.flexDirection = "column"
+            finalLi.textContent =  highListName + ": " + highListScore;
+            highListSection.appendChild(finalLi);
+            backB.style.display = "inline-block"
+            clearB.style.display = "inline-block"
+        } 
+    }else {
+        console.log("no scores")
+        var noText = document.createElement("h1");
+        noText.textContent = "no scores yet"
+        backB.style.display = "inline-block"
+        highListSection.append(noText);
     }
 }
-
+clearB.addEventListener('click', clearScores)
 backB.addEventListener('click', loseGame);
