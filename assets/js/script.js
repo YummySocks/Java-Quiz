@@ -9,6 +9,12 @@ var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
 var index = 0;
 var choices = Array.from(document.querySelectorAll(".answers"));
+var timeLeft = document.querySelector("#timeLeft").innerHTML
+var timeCount;
+var scoreSection = document.querySelector(".highNoot");
+var finalScore = document.querySelector(".finalScore");
+var finalB = document.querySelector("finalB");
+winner = false;
 console.log(choices);
 console.log();
 var quizCont = [
@@ -73,7 +79,7 @@ function checkAnswers (event){
         console.log('dumbass');
         tempText.style.padding= "2px 0 0 0"
         tempText.innerHTML = "Wrong!"
-
+        timeLeft = timeLeft - 10;
         nextQuestion();
     }
 }
@@ -84,6 +90,7 @@ startB.addEventListener("click", function(){
     starterI.style.display = "none";
     startB.style.display = "none";
     startT.style.display = "none";
+    timerTime();
     displayQuestions();
 } );
 
@@ -112,8 +119,8 @@ function nextQuestion(){
     li4.innerHTML = questions[index].choice4;
     console.log(questions[index].correctAns)
 } else {
+    winner = true;
     hideStuff();
-    highScore();
 }
 }
 
@@ -127,6 +134,38 @@ function hideStuff () {
     tempText.style.display = "none";
 
 }
-function highScore () {
 
+function timerTime () {
+    timer = setInterval(function (){
+        if (timeLeft >= 0){
+        timeLeft --;
+        timeLeft.textContent = timeCount;
+        document.querySelector(".time-left").innerHTML = timeLeft
+
+            if (winner && timeLeft > 0){
+            clearInterval(timer);
+            document.querySelector(".time-left").innerHTML = timeLeft
+            console.log(timeLeft);
+            score = timeLeft;
+            finalScreen();
+            }
+        }
+        if (timeLeft === 0){
+        clearInterval(timer);
+        hideStuff();
+        loseGame();
+        }
+    }, 1000)
+}
+
+function finalScreen () {
+    console.log("its winner time");
+    console.log(score);
+    scoreSection.style.display= "contents";
+    finalScore.innerHTML = score;
+
+}
+
+function loseGame () {
+    console.log("youre a loser! Loser!")
 }

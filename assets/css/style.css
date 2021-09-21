@@ -25,6 +25,10 @@ main, section {
     padding: 2rem 6rem;
 }
 
+.highNoot {
+    display: none;
+}
+
 .answer-list {
     display: none;
     list-style-type: none;
