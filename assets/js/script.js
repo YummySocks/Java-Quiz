@@ -15,9 +15,7 @@ var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText")
-var storedScores = JSON.parse(localStorage.getItem("highScores"));
 winner = false;
-highScores = [];
 var quizCont = [
     {
         question: "this is the first question",
@@ -158,16 +156,13 @@ function finalScreen () {
 }
 
 
-function storeScore () {
+function storeScore (event) {
+    event.preventDefault();
     var scoreValues = {
     score: score,
     name: scoreInput.value.trim(),
-    }
-    highScores.push(scoreValues);
-    localStorage.setItem("highScores",JSON.stringify(highScores));
-    scoreInput.value = "";
-    location.reload(); 
-
+    };
+    localStorage.setItem("highScores", JSON.stringify(scoreValues));
 }
 
 function loseGame () {
