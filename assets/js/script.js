@@ -1,4 +1,4 @@
-var highScore = document.querySelector(".high-scores");
+var highScoreB = document.querySelector(".high-scores");
 var timeEl = document.querySelector(".time-left");
 var startH = document.querySelector(".starter-header");
 var questH = document.querySelector(".question-header");
@@ -14,7 +14,9 @@ var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector("finalB");
+var scoreInput = document.querySelector("#scoreText")
 winner = false;
+highScores = [];
 console.log(choices);
 console.log();
 var quizCont = [
@@ -163,9 +165,15 @@ function finalScreen () {
     console.log(score);
     scoreSection.style.display= "contents";
     finalScore.innerHTML = score;
+    finalB.addEventListener("click", storeScore)
+
+}
+
+function storeScore () {
+    var scoreValue = scoreInput.value.trim();
 
 }
 
 function loseGame () {
-    console.log("youre a loser! Loser!")
+    console.log("youre a loser! Loser!");
 }
