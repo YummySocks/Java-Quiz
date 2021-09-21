@@ -1,18 +1,10 @@
 
-.scoreList, .topBar {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-}
+
 
 h1{
     font-size: 2.2rem;
 }
 
-.starter-header {
-    display: contents;
-}
 
 h2{
     font-size: 1.8rem;
@@ -23,6 +15,19 @@ main, section {
     flex-direction: column;
     align-items: center;
     padding: 2rem 6rem;
+}
+.temporary {
+    border-top: solid black;
+}
+.scoreList, .topBar {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.starter-header {
+    display: contents;
 }
 
 .finalScreen {

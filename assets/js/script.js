@@ -4,6 +4,10 @@ var startH = document.querySelector(".starter-header");
 var questH = document.querySelector(".question-header");
 var startT = document.querySelector(".starter-text");
 var startB = document.querySelector("#startB");
+var li1 = document.querySelector("#li1")
+var li2 = document.querySelector("#li2")
+var li3 = document.querySelector("#li3")
+var li4 = document.querySelector("#li4")
 var answersLi = document.querySelector(".answer-list");
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
@@ -75,12 +79,21 @@ state = "";
 function checkAnswers (event){
     var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
+    debugger
     if (element == state){
+        tempText.style.display = "contents"
         tempText.innerHTML = "Correct!"
+        setTimeout(function(){
+            tempText.style.display = "none";
+        }, 2000)
         nextQuestion();
     } else{
         tempText.style.padding= "2px 0 0 0"
+        tempText.style.display = "contents"
         tempText.innerHTML = "Wrong!"
+        setTimeout(function(){
+            tempText.style.display = "none";
+        }, 2000)
         timeLeft = timeLeft - 10;
         nextQuestion();
     }
@@ -102,7 +115,6 @@ startB.addEventListener("click", function(){
 function displayQuestions (){
     answersLi.style.display = "contents";
     document.querySelector("section").style.alignItems = "flex-start";
-    
     questH.innerHTML = questions[index].question;
     li1.innerHTML = questions[index].choice1;
     li2.innerHTML = questions[index].choice2;
