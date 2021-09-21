@@ -16,6 +16,9 @@ var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText");
 var tempText = document.querySelector(".temp");
 var highListSection = document.querySelector(".highListSection");
+var finalScreenSection = document.querySelector(".finalScreen");
+var backB = document.querySelector(".backB");
+backB.style.display = "none";
 winner = false;
 var highList = [];
 var quizCont = [
@@ -79,8 +82,13 @@ function checkAnswers (event){
         nextQuestion();
     }
 }
-
+highScoreB.addEventListener('click', function(){
+    highScoreB.style.display = "none"
+    hideStuff();
+    displayHighScores();
+})
 startB.addEventListener("click", function(){
+    highScoreB.style.display = "none";
     starterI.style.display = "none";
     startB.style.display = "none";
     startT.style.display = "none";
@@ -184,12 +192,18 @@ function loseGame () {
 function displayHighScores (){
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
+    document.querySelector(".topBar").style.display = "none";
     console.log(highScores);
     for (i = 0; i < highScores.length; i ++){
         var highListScore = highScores[i].score;
         var highListName = highScores[i].name;
-        var li = document.createElement("li")
-        li.textContent = highListScore + highListName;
-        highListSection.appendChild(li);
+        var finalLi = document.createElement("li")
+        finalLi.style.listStyle = "none";
+        finalLi.style.flexDirection = "column"
+        finalLi.textContent =  highListName + ": " + highListScore;
+        highListSection.appendChild(finalLi);
+        backB.style.display = "block"
     }
 }
+
+backB.addEventListener('click', loseGame);
