@@ -26,44 +26,44 @@ winner = false;
 var highList = [];
 var quizCont = [
     {
-        question: "this is the first question",
-        choice1: "1: "+ "first",
-        choice2: "2: " + "second",
-        choice3: "3: " + "third",
-        choice4: "4: " + "fourth",
-        correctAns: '1',
-    },
-    {
-        question: "this is the 2nd question",
-        choice1: "1: " + "1st",
-        choice2: "2: " + "2nd",
-        choice3: "3: " + "3rd",
-        choice4: "4: " + "4th",
+        question: "Commonly used data types DO NOT include",
+        choice1: "1: "+ "strings",
+        choice2: "2: " + "booleans",
+        choice3: "3: " + "alerts",
+        choice4: "4: " + "numbers",
         correctAns: '2',
     },
     {
-        question: "this is the 3rd question",
-        choice1: "1: " + "first",
-        choice2: "2: " + "second",
-        choice3: "3: " + "third",
-        choice4: "4: " + "fourth",
+        question: "The condition if an if/else statement is enclosed within ______",
+        choice1: "1: " + "quotes",
+        choice2: "2: " + "curly brackets",
+        choice3: "3: " + "parenthesis",
+        choice4: "4: " + "square brackets",
         correctAns: '3',
     },
     {
-        question: "this is the 4th question",
-        choice1: "1: " + "first",
-        choice2: "2: " + "second",
-        choice3: "3: " + "third",
-        choice4: "4: " + "fourth",
+        question: "Arrays in JavaScript can be used to store",
+        choice1: "1: " + "numbers and strings",
+        choice2: "2: " + "other arrays",
+        choice3: "3: " + "booleans",
+        choice4: "4: " + "all of the above",
         correctAns: '4',
     },
     {
-        question: "this is the 5th question",
-        choice1: "1: " + "first",
-        choice2: "2: " + "second",
-        choice3: "3: " + "third",
-        choice4: "4: " + "fourth",
-        correctAns: '1',
+        question: "String values must be enclosed within ____ when being assigned to variables",
+        choice1: "1: " + "commas",
+        choice2: "2: " + "curly brackets",
+        choice3: "3: " + "quotes",
+        choice4: "4: " + "parenthesis",
+        correctAns: '3',
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choice1: "1: " + "JavaScript",
+        choice2: "2: " + "terminal/bash",
+        choice3: "3: " + "for loops",
+        choice4: "4: " + "console.log",
+        correctAns: '4',
     }
     
 ]
@@ -198,7 +198,7 @@ function clearScores () {
     
     localStorage.clear();
     displayHighScores();
-    highListSection.style.display = 'none'
+    // highListSection.style.display = 'none'
     var noText = document.createElement("h1");
     noText.textContent = "no scores yet"
 
