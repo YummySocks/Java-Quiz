@@ -8,13 +8,13 @@ var answersLi = document.querySelector(".answer-list");
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
 var index = 0;
-var choices = Array.from(document.querySelectorAll(".answers"));
 var timeLeft = document.querySelector("#timeLeft").innerHTML
 var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText");
+var tempText = document.querySelector(".temp");
 winner = false;
 var quizCont = [
     {
@@ -62,7 +62,7 @@ var quizCont = [
 var questions = [...quizCont];
 element = "";
 state = "";
-var tempText = document.querySelector(".temp");
+
 
 function checkAnswers (event){
     var element = event.target.innerHTML[0];
@@ -78,8 +78,6 @@ function checkAnswers (event){
     }
 }
 
-
-console.log(quizCont)
 startB.addEventListener("click", function(){
     starterI.style.display = "none";
     startB.style.display = "none";
