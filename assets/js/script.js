@@ -79,13 +79,12 @@ state = "";
 function checkAnswers (event){
     var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
-    debugger
     if (element == state){
         tempText.style.display = "contents"
         tempText.innerHTML = "Correct!"
         setTimeout(function(){
             tempText.style.display = "none";
-        }, 2000)
+        }, 1000)
         nextQuestion();
     } else{
         tempText.style.padding= "2px 0 0 0"
@@ -93,7 +92,7 @@ function checkAnswers (event){
         tempText.innerHTML = "Wrong!"
         setTimeout(function(){
             tempText.style.display = "none";
-        }, 2000)
+        }, 1000)
         timeLeft = timeLeft - 10;
         nextQuestion();
     }
@@ -152,8 +151,8 @@ function hideStuff () {
 function timerTime () {
     timer = setInterval(function (){
         if (timeLeft >= 0){
-        timeLeft --;
         timeLeft.textContent = timeCount;
+        timeLeft --;
         document.querySelector(".time-left").innerHTML = timeLeft
 
             if (winner && timeLeft > 0){
@@ -207,10 +206,8 @@ function loseGame () {
 function clearScores () {
     clearB.style.display = 'none'
     highListSection.style.display = 'none'
-    
     localStorage.clear();
     displayHighScores();
-    // highListSection.style.display = 'none'
     var noText = document.createElement("h1");
     noText.textContent = "no scores yet"
 
