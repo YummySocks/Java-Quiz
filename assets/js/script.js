@@ -168,9 +168,16 @@ function finalScreen () {
     finalB.addEventListener("click", storeScore)
 
 }
-
+var storedScores = JSON.parse(localStorage.getItem("highScores"))
+console.log(storedScores)
 function storeScore () {
-    var scoreValue = scoreInput.value.trim();
+    var scoreValues = {
+    score: score,
+    name: scoreInput.value.trim(),
+    }
+    highScores.push(scoreValues);
+    localStorage.setItem("highScores",JSON.stringify(score));
+    scoreInput.value = ""; 
 
 }
 
