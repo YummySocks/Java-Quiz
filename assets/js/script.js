@@ -15,10 +15,9 @@ var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText")
+var storedScores = JSON.parse(localStorage.getItem("highScores"));
 winner = false;
 highScores = [];
-console.log(choices);
-console.log();
 var quizCont = [
     {
         question: "this is the first question",
@@ -65,20 +64,15 @@ var quizCont = [
 var questions = [...quizCont];
 element = "";
 state = "";
-// var tempYText = ;
 var tempText = document.querySelector(".temp");
-console.log(tempText)
 
 function checkAnswers (event){
     var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
-    console.log(element);
     if (element == state){
-        console.log('good job');
         tempText.innerHTML = "Correct!"
         nextQuestion();
     } else{
-        console.log('dumbass');
         tempText.style.padding= "2px 0 0 0"
         tempText.innerHTML = "Wrong!"
         timeLeft = timeLeft - 10;
@@ -106,7 +100,6 @@ function displayQuestions (){
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4; 
     answersLi.addEventListener("click", checkAnswers);
-    console.log(questions[index].correctAns)
 }
 
 function nextQuestion(){
@@ -119,7 +112,6 @@ function nextQuestion(){
     li2.innerHTML = questions[index].choice2;
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4;
-    console.log(questions[index].correctAns)
 } else {
     winner = true;
     hideStuff();
@@ -128,7 +120,6 @@ function nextQuestion(){
 
 function hideStuff () {
     questH.style.display = "none"
-    console.log("display score now");
     answersLi.style.display = "none";
     starterI.style.display = "none";
     startB.style.display = "none";
@@ -147,7 +138,6 @@ function timerTime () {
             if (winner && timeLeft > 0){
             clearInterval(timer);
             document.querySelector(".time-left").innerHTML = timeLeft
-            console.log(timeLeft);
             score = timeLeft;
             finalScreen();
             }
@@ -161,15 +151,13 @@ function timerTime () {
 }
 
 function finalScreen () {
-    console.log("its winner time");
-    console.log(score);
     scoreSection.style.display= "contents";
     finalScore.innerHTML = score;
     finalB.addEventListener("click", storeScore);
 
 }
-// var storedScores = JSON.parse(localStorage.getItem("highScores"))
-console.log(storedScores)
+
+
 function storeScore () {
     var scoreValues = {
     score: score,
@@ -178,10 +166,10 @@ function storeScore () {
     highScores.push(scoreValues);
     localStorage.setItem("highScores",JSON.stringify(highScores));
     scoreInput.value = "";
-    location.reload();
+    location.reload(); 
 
 }
 
 function loseGame () {
-    console.log("youre a loser! Loser!");
+    location.reload();
 }
