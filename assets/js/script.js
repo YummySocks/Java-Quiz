@@ -163,14 +163,24 @@ function storeScore (event) {
     if(JSON.parse(localStorage.getItem("highScores"))== null){
     highScores = [scoreValues];
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    scoreInput.value = "";
+    displayHighScores();
     } else{
     highScores = JSON.parse(localStorage.getItem("highScores"));
     console.log(highScores);
     highScores.push(scoreValues);
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    scoreInput.value = "";
+    displayHighScores();
     }
 }
 
 function loseGame () {
     location.reload();
+}
+
+function displayHighScores (){
+    scoreSection.style.display = "none";
+    highScores = JSON.parse(localStorage.getItem("highScores"));
+    console.log(highScores);
 }
