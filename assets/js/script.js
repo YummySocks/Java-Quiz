@@ -3,10 +3,6 @@ var timeEl = document.querySelector(".time-left");
 var startH = document.querySelector(".starter-header");
 var questH = document.querySelector(".question-header");
 var startT = document.querySelector(".starter-text");
-var li1 = document.querySelector("#li1");
-var li2 = document.querySelector("#li2");
-var li3 = document.querySelector("#li3");
-var li4 = document.querySelector("#li4");
 var startB = document.querySelector("#startB");
 var answersLi = document.querySelector(".answer-list");
 var startT = document.querySelector("#starter-text")
@@ -71,9 +67,13 @@ function checkAnswers (event){
     console.log(element);
     if (element == state){
         console.log('good job');
+        tempText.innerHTML = "Correct!"
         nextQuestion();
     } else{
         console.log('dumbass');
+        tempText.style.padding= "2px 0 0 0"
+        tempText.innerHTML = "Wrong!"
+
         nextQuestion();
     }
 }
@@ -101,11 +101,32 @@ function displayQuestions (){
 }
 
 function nextQuestion(){
+    
     index ++;
+    if (index < 5){
+
     questH.innerHTML = questions[index].question;
     li1.innerHTML = questions[index].choice1;
     li2.innerHTML = questions[index].choice2;
     li3.innerHTML = questions[index].choice3;
     li4.innerHTML = questions[index].choice4;
     console.log(questions[index].correctAns)
+} else {
+    hideStuff();
+    highScore();
+}
+}
+
+function hideStuff () {
+    questH.style.display = "none"
+    console.log("display score now");
+    answersLi.style.display = "none";
+    starterI.style.display = "none";
+    startB.style.display = "none";
+    startT.style.display = "none";
+    tempText.style.display = "none";
+
+}
+function highScore () {
+
 }
