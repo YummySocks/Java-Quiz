@@ -13,7 +13,7 @@ var timeLeft = document.querySelector("#timeLeft").innerHTML
 var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
-var finalB = document.querySelector("finalB");
+var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText")
 winner = false;
 highScores = [];
@@ -165,10 +165,10 @@ function finalScreen () {
     console.log(score);
     scoreSection.style.display= "contents";
     finalScore.innerHTML = score;
-    finalB.addEventListener("click", storeScore)
+    finalB.addEventListener("click", storeScore);
 
 }
-var storedScores = JSON.parse(localStorage.getItem("highScores"))
+// var storedScores = JSON.parse(localStorage.getItem("highScores"))
 console.log(storedScores)
 function storeScore () {
     var scoreValues = {
@@ -176,8 +176,9 @@ function storeScore () {
     name: scoreInput.value.trim(),
     }
     highScores.push(scoreValues);
-    localStorage.setItem("highScores",JSON.stringify(score));
-    scoreInput.value = ""; 
+    localStorage.setItem("highScores",JSON.stringify(highScores));
+    scoreInput.value = "";
+    location.reload();
 
 }
 
