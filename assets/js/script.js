@@ -15,7 +15,9 @@ var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
 var scoreInput = document.querySelector("#scoreText");
 var tempText = document.querySelector(".temp");
+var highListSection = document.querySelector(".highListSection");
 winner = false;
+var highList = [];
 var quizCont = [
     {
         question: "this is the first question",
@@ -183,4 +185,11 @@ function displayHighScores (){
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
     console.log(highScores);
+    for (i = 0; i < highScores.length; i ++){
+        var highListScore = highScores[i].score;
+        var highListName = highScores[i].name;
+        var li = document.createElement("li")
+        li.textContent = highListScore + highListName;
+        highListSection.appendChild(li);
+    }
 }
