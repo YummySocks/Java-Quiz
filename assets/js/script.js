@@ -14,7 +14,7 @@ var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
-var scoreInput = document.querySelector("#scoreText")
+var scoreInput = document.querySelector("#scoreText");
 winner = false;
 var quizCont = [
     {
@@ -162,7 +162,15 @@ function storeScore (event) {
     score: score,
     name: scoreInput.value.trim(),
     };
-    localStorage.setItem("highScores", JSON.stringify(scoreValues));
+    if(JSON.parse(localStorage.getItem("highScores"))== null){
+    highScores = [scoreValues];
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    } else{
+    highScores = JSON.parse(localStorage.getItem("highScores"));
+    console.log(highScores);
+    highScores.push(scoreValues);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
 }
 
 function loseGame () {
