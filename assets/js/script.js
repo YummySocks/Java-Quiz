@@ -233,6 +233,8 @@ function displayHighScores (){
     highScores = JSON.parse(localStorage.getItem("highScores"));
     document.querySelector(".topBar").style.display = "none";
     console.log(highScores);
+    // sorts the highscores array to display from highest to lowest score
+    highScores.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
     if (highScores != null){
         for (i = 0; i < highScores.length; i ++){
             var highListScore = highScores[i].score;
