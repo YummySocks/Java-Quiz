@@ -10,7 +10,6 @@ var li2 = document.querySelector("#li2");
 var li3 = document.querySelector("#li3");
 var li4 = document.querySelector("#li4");
 var answersLi = document.querySelector(".answer-list");
-console.log(answersLi);
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
 var index = 0;
@@ -200,7 +199,6 @@ function storeScore (event) {
     displayHighScores();
     } else{
     highScores = JSON.parse(localStorage.getItem("highScores"));
-    console.log(highScores);
     highScores.push(scoreValues);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     scoreInput.value = "";
@@ -228,7 +226,6 @@ function displayHighScores (){
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
     document.querySelector(".topBar").style.display = "none";
-    console.log(highScores);
     if (highScores != null){
         for (i = 0; i < highScores.length; i ++){
             // sorts the highscores array to display from highest to lowest score
@@ -244,7 +241,6 @@ function displayHighScores (){
             clearB.style.display = "inline-block"
         } 
     }else {
-        console.log("no scores")
         var noText = document.createElement("h1");
         noText.textContent = "no scores yet"
         backB.style.display = "inline-block"
