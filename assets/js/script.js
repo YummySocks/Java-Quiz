@@ -213,7 +213,7 @@ function loseGame () {
 function clearScores () {
     clearB.style.display = 'none'
     highListSection.style.display = 'none'
-    localStorage.clear();
+    localStorage.clear("highScores");
     var noText = document.createElement("h1");
     noText.textContent = "no scores yet"
     displayHighScores();
