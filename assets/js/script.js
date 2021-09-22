@@ -1,3 +1,4 @@
+// storing the unholy number of variables needed for code to work
 var highScoreB = document.querySelector(".high-scores");
 var timeEl = document.querySelector(".time-left");
 var startH = document.querySelector(".starter-header");
@@ -26,13 +27,16 @@ var clearB = document.querySelector("#clearB");
 var lastBs = document.querySelector(".lastB");
 var tempSection = document.querySelector(".temporary");
 var scoreH = document.querySelector(".scoreH");
+// sets styles to hide them so screen can look pretty
 scoreH.style.display = "none";
 tempSection.style.display ="none";
 backB.style.display = 'none';
 clearB.style.display = 'none';
+// sets default values for items
 winner = false;
 var questions = [];
 var highList = [];
+// full array of questions choices and right answers
 var quizCont = [
     {
         question: "Commonly used data types DO NOT include",
@@ -80,7 +84,7 @@ var questions = [...quizCont];
 element = "";
 state = "";
 
-
+// depending on the index checks to see if the clicked list item has the same string value as the correct ans
 function checkAnswers (event){
     var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
@@ -105,11 +109,13 @@ function checkAnswers (event){
         nextQuestion();
     }
 }
+// shows the high scores using the button on the start screen
 highScoreB.addEventListener('click', function(){
     highScoreB.style.display = "none";
     hideStuff();
     displayHighScores();
 })
+// hides starting text and runs the display questions and starts the timer
 startB.addEventListener("click", function(){
     highScoreB.style.display = "none";
     starterI.style.display = "none";
@@ -118,7 +124,7 @@ startB.addEventListener("click", function(){
     timerTime();
     displayQuestions();
 } );
-
+// cycles through the index of questions and runs the check answers function on click
 function displayQuestions (){
     answersLi.style.display = "contents";
     document.querySelector("section").style.alignItems = "flex-start";
@@ -129,7 +135,7 @@ function displayQuestions (){
     li4.innerHTML = questions[index].choice4; 
     answersLi.addEventListener("click", checkAnswers);
 }
-
+// goes to the next question and once the last question is answered will move to the name input screen
 function nextQuestion(){
     
     index ++;
@@ -145,7 +151,7 @@ function nextQuestion(){
     setTimeout(hideStuff, 1000);
 }
 }
-
+// hides the question content for when displaying the final screen
 function hideStuff () {
     questH.style.display = "none"
     answersLi.style.display = "none";
@@ -155,14 +161,14 @@ function hideStuff () {
     tempText.style.display = "none";
 
 }
-
+// timer that counts down and changes innerHTML to reflect 
 function timerTime () {
     timer = setInterval(function (){
         if (timeLeft >= 0){
         timeLeft.textContent = timeCount;
         timeLeft --;
         document.querySelector(".time-left").innerHTML = timeLeft
-
+            // checks if there are no more questions and stores the time left as the score
             if (winner && timeLeft > 0){
             clearInterval(timer);
             document.querySelector(".time-left").innerHTML = timeLeft
@@ -177,7 +183,7 @@ function timerTime () {
         }
     }, 1000);
 }
-
+// score input screen that displays what your results are
 function finalScreen () {
     scoreH.style.display = "contents"
     scoreSection.style.display= "contents";
@@ -186,7 +192,7 @@ function finalScreen () {
 
 }
 
-
+// stores the score and name into local storage as an array of objects 
 function storeScore (event) {
     event.preventDefault();
     var scoreValues = {
@@ -207,21 +213,21 @@ function storeScore (event) {
     displayHighScores();
     }
 }
-
+// runs if the timer hits 0 and forces a refresh
 function loseGame () {
     location.reload();
 }
-
+// on the high scores page clicking this will cause the local storage to be cleared and if there are no scores to clear will display as such
 function clearScores () {
     clearB.style.display = 'none'
     highListSection.style.display = 'none'
     localStorage.clear();
-    displayHighScores();
     var noText = document.createElement("h1");
     noText.textContent = "no scores yet"
+    displayHighScores();
 
 }
-
+// pulls the scores from local storage and displays them by running through the array
 function displayHighScores (){
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
@@ -247,5 +253,6 @@ function displayHighScores (){
         highListSection.append(noText);
     }
 }
+// buttons for clear and back
 clearB.addEventListener('click', clearScores)
 backB.addEventListener('click', loseGame);
