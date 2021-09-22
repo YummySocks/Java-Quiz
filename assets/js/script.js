@@ -10,11 +10,11 @@ var li2 = document.querySelector("#li2");
 var li3 = document.querySelector("#li3");
 var li4 = document.querySelector("#li4");
 var answersLi = document.querySelector(".answer-list");
+console.log(answersLi);
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
 var index = 0;
 var timeLeft = document.querySelector("#timeLeft").innerHTML;
-var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
 var finalB = document.querySelector(".finalB");
@@ -160,7 +160,6 @@ function hideStuff () {
 function timerTime () {
     timer = setInterval(function (){
         if (timeLeft >= 0){
-        timeLeft.textContent = timeCount;
         timeLeft --;
         document.querySelector(".time-left").innerHTML = timeLeft
             // checks if there are no more questions and stores the time left as the score
