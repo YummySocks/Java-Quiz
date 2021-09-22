@@ -4,15 +4,15 @@ var startH = document.querySelector(".starter-header");
 var questH = document.querySelector(".question-header");
 var startT = document.querySelector(".starter-text");
 var startB = document.querySelector("#startB");
-var li1 = document.querySelector("#li1")
-var li2 = document.querySelector("#li2")
-var li3 = document.querySelector("#li3")
-var li4 = document.querySelector("#li4")
+var li1 = document.querySelector("#li1");
+var li2 = document.querySelector("#li2");
+var li3 = document.querySelector("#li3");
+var li4 = document.querySelector("#li4");
 var answersLi = document.querySelector(".answer-list");
 var startT = document.querySelector("#starter-text")
 var starterI = document.querySelector(".starter-items");
 var index = 0;
-var timeLeft = document.querySelector("#timeLeft").innerHTML
+var timeLeft = document.querySelector("#timeLeft").innerHTML;
 var timeCount;
 var scoreSection = document.querySelector(".highNoot");
 var finalScore = document.querySelector(".finalScore");
@@ -24,9 +24,14 @@ var finalScreenSection = document.querySelector(".finalScreen");
 var backB = document.querySelector("#backB");
 var clearB = document.querySelector("#clearB");
 var lastBs = document.querySelector(".lastB");
-backB.style.display = 'none'
-clearB.style.display = 'none'
+var tempSection = document.querySelector(".temporary");
+var scoreH = document.querySelector(".scoreH");
+scoreH.style.display = "none";
+tempSection.style.display ="none";
+backB.style.display = 'none';
+clearB.style.display = 'none';
 winner = false;
+var questions = [];
 var highList = [];
 var quizCont = [
     {
@@ -70,7 +75,7 @@ var quizCont = [
         correctAns: '4',
     }
     
-]
+];
 var questions = [...quizCont];
 element = "";
 state = "";
@@ -80,25 +85,28 @@ function checkAnswers (event){
     var element = event.target.innerHTML[0];
     var state = quizCont[index].correctAns;
     if (element == state){
-        tempText.style.display = "contents"
-        tempText.innerHTML = "Correct!"
+        tempSection.style.display = "block";
+        tempText.style.display = "block";
+        tempText.innerHTML = "Correct!";
         setTimeout(function(){
-            tempText.style.display = "none";
-        }, 1000)
+            tempText.style.display= "none";
+            tempSection.style.display = "none";
+        }, 500);
         nextQuestion();
     } else{
-        tempText.style.padding= "2px 0 0 0"
-        tempText.style.display = "contents"
-        tempText.innerHTML = "Wrong!"
+        tempSection.style.display = "block";
+        tempText.style.display = "block";
+        tempText.innerHTML = "Wrong!";
         setTimeout(function(){
-            tempText.style.display = "none";
-        }, 1000)
+            tempText.style.display= "none";
+            tempSection.style.display = "none";
+        }, 500);
         timeLeft = timeLeft - 10;
         nextQuestion();
     }
 }
 highScoreB.addEventListener('click', function(){
-    highScoreB.style.display = "none"
+    highScoreB.style.display = "none";
     hideStuff();
     displayHighScores();
 })
@@ -134,7 +142,7 @@ function nextQuestion(){
     li4.innerHTML = questions[index].choice4;
 } else {
     winner = true;
-    hideStuff();
+    setTimeout(hideStuff, 1000);
 }
 }
 
@@ -159,7 +167,7 @@ function timerTime () {
             clearInterval(timer);
             document.querySelector(".time-left").innerHTML = timeLeft
             score = timeLeft;
-            finalScreen();
+            setTimeout(finalScreen, 1000);
             }
         }
         if (timeLeft === 0){
@@ -167,10 +175,11 @@ function timerTime () {
         hideStuff();
         loseGame();
         }
-    }, 1000)
+    }, 1000);
 }
 
 function finalScreen () {
+    scoreH.style.display = "contents"
     scoreSection.style.display= "contents";
     finalScore.innerHTML = score;
     finalB.addEventListener("click", storeScore);
