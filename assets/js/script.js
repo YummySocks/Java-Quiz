@@ -229,14 +229,16 @@ function clearScores () {
 }
 // pulls the scores from local storage and displays them by running through the array
 function displayHighScores (){
+    scoreH.style.display = "contents"
+    scoreH.textContent = "High Scores"
     scoreSection.style.display = "none";
     highScores = JSON.parse(localStorage.getItem("highScores"));
     document.querySelector(".topBar").style.display = "none";
     console.log(highScores);
-    // sorts the highscores array to display from highest to lowest score
-    highScores.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
     if (highScores != null){
         for (i = 0; i < highScores.length; i ++){
+            // sorts the highscores array to display from highest to lowest score
+            highScores.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
             var highListScore = highScores[i].score;
             var highListName = highScores[i].name;
             var finalLi = document.createElement("li")
