@@ -44,7 +44,7 @@ var quizCont = [
         choice2: "2: " + "booleans",
         choice3: "3: " + "alerts",
         choice4: "4: " + "numbers",
-        correctAns: '2',
+        correctAns: '3',
     },
     {
         question: "The condition if an if/else statement is enclosed within ______",
@@ -140,12 +140,7 @@ function nextQuestion(){
     
     index ++;
     if (index < 5){
-
-    questH.innerHTML = questions[index].question;
-    li1.innerHTML = questions[index].choice1;
-    li2.innerHTML = questions[index].choice2;
-    li3.innerHTML = questions[index].choice3;
-    li4.innerHTML = questions[index].choice4;
+    displayQuestions();
 } else {
     winner = true;
     setTimeout(hideStuff, 1000);
